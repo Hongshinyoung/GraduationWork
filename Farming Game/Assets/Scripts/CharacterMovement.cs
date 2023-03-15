@@ -4,27 +4,40 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    public float speed = 5f;
+    public Transform cameraTransform;
+    public CharacterController characterController;
 
-    private Rigidbody rid;
+    public float moveSpeed = 5f;
+    public float jumpSpeed = 5f;
+    public float gravity = -9.81f;
+    public float yVelocity = 0;
 
     void Start()
     {
-        rid = GetComponent<Rigidbody>();
+
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
+        Vector3 moveDirection = new Vector3(h, 0, v);
 
-        Vector3 move = new Vector3(horizontal, 0f, vertical);
+        moveDirection = cameraTransform.TransformDirection(moveDirection);
 
-        rid.velocity = move * speed;
+        moveDirection *= moveSpeed;
 
-        if (move != Vector3.zero)
+        if (characterController.isGrounded)
         {
-            rid.transform.forward = move;
+            yVelocity = 0;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                yVelocity = jumpSpeed;
+            }
         }
+
+        yVelocity += (gravity * Time.deltaTime);
+        moveDirection.y = yVelocity;
+        characterController.Move(moveDirection * Time.deltaTime);
     }
 }
