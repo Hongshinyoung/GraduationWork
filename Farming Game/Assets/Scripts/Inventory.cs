@@ -4,7 +4,19 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    //private int mGold = 0;
+    //public int gold { get; set; }
+    //private int mSpace = 32;
+    //public int space { get; set; }
+
     public List<Item> items;
+
+    //public delegate void WasItemChange();
+    //public WasItemChange wasItemChanged;
+
+    //public delegate void WasGoldChange();
+    //public WasGoldChange wasGoldChanged;
+
 
     [SerializeField]
     private Transform slotParent;
