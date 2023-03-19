@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Market
+  - Land
   layers:
   - Default
   - TransparentFX
