@@ -4,59 +4,15 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    //private int mGold = 0;
-    //public int gold { get; set; }
-    //private int mSpace = 32;
-    //public int space { get; set; }
-
-    public List<Item> items;
-
-    //public delegate void WasItemChange();
-    //public WasItemChange wasItemChanged;
-
-    //public delegate void WasGoldChange();
-    //public WasGoldChange wasGoldChanged;
-
+    public int Capacity { get; private set; }
 
     [SerializeField]
-    private Transform slotParent;
+    private InventoryUi _inventoryUI; // 연결된 인벤토리 UI
+
+    /// <summary> 아이템 목록 </summary>
     [SerializeField]
-    private Slot[] slots;
+    private Item[] _items;
 
-    private void OnValidate()
-    {
-        slots = slotParent.GetComponentsInChildren<Slot>();
-    }
 
-    private void Awake()
-    {
-        FreshSlot();
-    }
-
-    public void FreshSlot()
-    {
-        int i = 0;
-        for (; i < items.Count && i < slots.Length; i++)
-        {
-            slots[i].item = items[i];
-        }
-        for (; i < slots.Length; i++)
-        {
-            slots[i].item = null;
-        }
-    }
-
-    public void AddItem(Item _item)
-    {
-        if (items.Count < slots.Length)
-        {
-            items.Add(_item);
-            FreshSlot();
-        }
-        else
-        {
-            print("슬롯이 가득 차 있습니다.");
-        }
-    }
 
 }

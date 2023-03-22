@@ -17,15 +17,15 @@ public class MarketUi : MonoBehaviour
     {
         if (other.gameObject.name == "Player")
         {
-            Debug.Log("상점이용가능지역");
+            Debug.Log("상점 이용 가능 지역");
             coli = true;
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.name == "Player")
+        if (other.gameObject.name == "Player")
         {
-            Debug.Log("상점이용불가지역");
+            Debug.Log("상점 이용 불가 지역");
             coli = false;
         }
     }
@@ -33,7 +33,7 @@ public class MarketUi : MonoBehaviour
 
     private void Update()
     {
-        if(coli == true)
+        if (coli == true)
         {
             if (Input.GetKeyDown(KeyCode.M))
             {
