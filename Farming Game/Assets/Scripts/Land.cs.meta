@@ -5,8 +5,9 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - soilMat: {fileID: 2100000, guid: 50d0e4af3e3283740856fc9a0b2184f7, type: 2}
-  - farmlandMat: {instanceID: 0}
-  - wateredMat: {instanceID: 0}
+  - farmlandMat: {fileID: 2100000, guid: 631cd9ef012b9734280e3773fb701907, type: 2}
+  - wateredMat: {fileID: 2100000, guid: b3b068a8888a0ec46a761c65e5880ecf, type: 2}
+  - select: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

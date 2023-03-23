@@ -5,19 +5,28 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     public Transform cameraTransform;
-    public CharacterController characterController;
+    public CharacterController controller;
 
     public float moveSpeed = 5f;
     public float jumpSpeed = 5f;
     public float gravity = -9.81f;
     public float yVelocity = 0;
 
+    PlayerInteraction playerInteraction;
+
     void Start()
     {
-
+        controller = GetComponent<CharacterController>();
+        playerInteraction = GetComponentInChildren<PlayerInteraction>();
     }
 
     void Update()
+    {
+        Move();
+        Interact();
+    }
+
+    public void Move()
     {
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
@@ -27,7 +36,7 @@ public class CharacterMovement : MonoBehaviour
 
         moveDirection *= moveSpeed;
 
-        if (characterController.isGrounded)
+        if (controller.isGrounded)
         {
             yVelocity = 0;
             if (Input.GetKeyDown(KeyCode.Space))
@@ -38,6 +47,18 @@ public class CharacterMovement : MonoBehaviour
 
         yVelocity += (gravity * Time.deltaTime);
         moveDirection.y = yVelocity;
-        characterController.Move(moveDirection * Time.deltaTime);
+        controller.Move(moveDirection * Time.deltaTime);
+    }
+
+    public void Interact()
+    {
+        //Tool interaction
+        if (Input.GetButtonDown("Fire1"))
+        {
+            //Interact
+            playerInteraction.Interact();
+        }
+
+        //TODO: Set up item interaction
     }
 }
