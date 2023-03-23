@@ -18,6 +18,12 @@ public class CharacterMovement : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         playerInteraction = GetComponentInChildren<PlayerInteraction>();
+
+        //태양 움직임 체크
+        if (Input.GetKey(KeyCode.RightBracket))
+        {
+            TimeManager.Instance.Tick();
+        }
     }
 
     void Update()
