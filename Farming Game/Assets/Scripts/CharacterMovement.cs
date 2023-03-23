@@ -16,16 +16,8 @@ public class CharacterMovement : MonoBehaviour
 
     void Start()
     {
-<<<<<<< Updated upstream
         controller = GetComponent<CharacterController>();
         playerInteraction = GetComponentInChildren<PlayerInteraction>();
-=======
-        //¹ã³·º¯°æ È®ÀÎ¿ë
-        if (Input.GetKey(KeyCode.RightBracket))
-        {
-            TimeManager.Instance.Tick();
-        }
->>>>>>> Stashed changes
     }
 
     void Update()

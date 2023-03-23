@@ -348,7 +348,6 @@
 "Assets/Scripts/Camera.cs"
 "Assets/Scripts/CharacterMovement.cs"
 "Assets/Scripts/CropBehaviour.cs"
-"Assets/Scripts/GameTimestamp.cs"
 "Assets/Scripts/Inventory.cs"
 "Assets/Scripts/InventoryUi.cs"
 "Assets/Scripts/Item.cs"
@@ -360,7 +359,6 @@
 "Assets/Scripts/PlayerInteraction.cs"
 "Assets/Scripts/SeedData.cs"
 "Assets/Scripts/Slot.cs"
-"Assets/Scripts/TimeManager.cs"
 -langversion:9.0
 
 /deterministic
