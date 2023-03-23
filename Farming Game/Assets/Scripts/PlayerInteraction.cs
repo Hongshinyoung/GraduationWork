@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-
+    PlayerController playerController;
     //The land the player is currently selecting
     Land selectedLand = null;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        //Get access to our PlayerController component
+        playerController = transform.parent.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -60,5 +61,16 @@ public class PlayerInteraction : MonoBehaviour
         land.Select(true);
     }
 
+    //Triggered when the player presses the tool button
+    public void Interact()
+    {
+        //Check if the player is selecting any land
+        if (selectedLand != null)
+        {
+            selectedLand.Interact();
+            return;
+        }
 
+        Debug.Log("Not on any land!");
+    }
 }

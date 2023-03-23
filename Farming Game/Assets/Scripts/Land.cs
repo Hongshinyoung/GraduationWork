@@ -28,7 +28,6 @@ public class Land : MonoBehaviour
 
         //Deselect the land by default
         Select(false);
-
     }
 
     public void SwitchLandStatus(LandStatus statusToSwitch)
@@ -66,4 +65,10 @@ public class Land : MonoBehaviour
         select.SetActive(toggle);
     }
 
+    //When the player presses the interact button while selecting this land
+    public void Interact()
+    {
+        //Interaction 
+        SwitchLandStatus(LandStatus.Farmland);
+    }
 }
