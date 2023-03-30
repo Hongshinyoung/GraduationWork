@@ -357,6 +357,7 @@
 "Assets/Scripts/Market.cs"
 "Assets/Scripts/MarketUi.cs"
 "Assets/Scripts/MovableHeader.cs"
+"Assets/Scripts/Pig.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/PlayerInteraction.cs"
 "Assets/Scripts/SeedData.cs"
