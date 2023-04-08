@@ -6,13 +6,15 @@ public class TimeManager : MonoBehaviour
 {
     public static TimeManager Instance { get; private set; }
 
+    [Header("Internal Clock")]
     [SerializeField]
     GameTimestamp timestamp;
     public float timeScale = 1.0f;
 
+    [Header("Day and Night cycle")]
     public Transform sunTransform;
 
-
+    List<ITimeTracker> listeners = new List<ITimeTracker>();
 
     private void Awake()
     {
@@ -48,6 +50,11 @@ public class TimeManager : MonoBehaviour
     {
         timestamp.UpdateClock();
 
+        foreach(ITimeTracker listener in listeners)
+        {
+            listener.ClockUpdate(timestamp);
+        }
+
         UpdateSunMovement();
     }
 
@@ -60,4 +67,13 @@ public class TimeManager : MonoBehaviour
         sunTransform.eulerAngles = new Vector3(sunAngle, 0, 0);
     }
 
+    public void RegisterTracker(ITimeTracker listener)
+    {
+        listeners.Remove(listener);
+    }
+
+    public void UnregisterTracker(ITimeTracker listener)
+    {
+        listeners.Remove(listener);
+    }
 }
