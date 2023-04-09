@@ -18,6 +18,11 @@ public class PlayerInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.RightBracket))
+        {
+            TimeManager.Instance.Tick();
+        }
+
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit, 1))
         {

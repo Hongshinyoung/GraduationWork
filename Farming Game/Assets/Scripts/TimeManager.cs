@@ -67,6 +67,10 @@ public class TimeManager : MonoBehaviour
         sunTransform.eulerAngles = new Vector3(sunAngle, 0, 0);
     }
 
+    public GameTimestamp GetGameTimestamp()
+    {
+        return new GameTimestamp(timestamp);
+    }
     public void RegisterTracker(ITimeTracker listener)
     {
         listeners.Remove(listener);
