@@ -79,9 +79,17 @@ public class Land : MonoBehaviour, ITimeTracker
     //When the player presses the interact button while selecting this land
     public void Interact()
     {
+        if (landStatus == LandStatus.Farmland)
+        {
+            SwitchLandStatus(LandStatus.Watered);
+        }
+        else
+        {
+            SwitchLandStatus(LandStatus.Farmland);
+        }
         //Interaction 
-        SwitchLandStatus(LandStatus.Farmland);
     }
+
 
     //Checked if 24 hours has passed last watered
     public void ClockUpdate(GameTimestamp timestamp)
