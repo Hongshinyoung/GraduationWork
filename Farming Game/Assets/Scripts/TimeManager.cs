@@ -73,7 +73,7 @@ public class TimeManager : MonoBehaviour
     }
     public void RegisterTracker(ITimeTracker listener)
     {
-        listeners.Remove(listener);
+        listeners.Add(listener);
     }
 
     public void UnregisterTracker(ITimeTracker listener)
