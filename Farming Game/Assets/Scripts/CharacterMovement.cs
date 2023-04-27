@@ -17,7 +17,7 @@ public class CharacterMovement : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        playerInteraction = GetComponentInChildren<PlayerInteraction>();
+        playerInteraction = GetComponentInChildren<PlayerInteraction>(); //자식 객체에서 특정 컴포넌트 가져오기(가장 상위에 있는)
 
         //태양 움직임 체크
         if (Input.GetKey(KeyCode.RightBracket))
@@ -32,7 +32,7 @@ public class CharacterMovement : MonoBehaviour
         Interact();
     }
 
-    public void Move()
+    public void Move() //움직임 구현 함수
     {
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
@@ -56,7 +56,7 @@ public class CharacterMovement : MonoBehaviour
         controller.Move(moveDirection * Time.deltaTime);
     }
 
-    public void Interact()
+    public void Interact() //상호작용 구현 함수
     {
         //Tool interaction
         if (Input.GetButtonDown("Fire1"))
@@ -65,6 +65,6 @@ public class CharacterMovement : MonoBehaviour
             playerInteraction.Interact();
         }
 
-        //TODO: Set up item interaction
+        //마우스 왼쪽 클릭 시 playerInteraction.Interact() 호출
     }
 }

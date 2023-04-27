@@ -30,12 +30,12 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-    //Handles what happens when the interaction raycast hits something interactable
+    //Raycast가 상호작용 가능한 대상에 부딪힐 때 발생하는 일을 처리
     void OnInteractableHit(RaycastHit hit)
     {
         Collider other = hit.collider;
 
-        //Check if the player is going to interact with land
+        //플레이어가 땅과 상호작용 하려는 지 확인
         if (other.tag == "Land")
         {
             //Get the land component
@@ -44,7 +44,7 @@ public class PlayerInteraction : MonoBehaviour
             return;
         }
 
-        //Deselect the land if the player is not standing on any land at the moment
+        //플레이어가 땅 위에 서있지 않으면 Select를 false로 변경
         if (selectedLand != null)
         {
             selectedLand.Select(false);
@@ -52,24 +52,24 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-    //Handles the selection process of the land
+    //땅을 선택하는 핸들
     void SelectLand(Land land)
     {
-        //Set the previously selected land to false (If any)
+        //이전에 선택한 토지를 false로 설정 (If any)
         if (selectedLand != null)
         {
             selectedLand.Select(false);
         }
 
-        //Set the new selected land to the land we're selecting now. 
+        //새로 선택한 토지를 지금 선택하고 있는 토지로 설정
         selectedLand = land;
         land.Select(true);
     }
 
-    //Triggered when the player presses the tool button
+    //플레이어가 마우스 왼쪽 클릭 했을 때 Triggered
     public void Interact()
     {
-        //Check if the player is selecting any land
+        //플레이어가 토지를 선택하고 있는지 확인
         if (selectedLand != null)
         {
             selectedLand.Interact();
